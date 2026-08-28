@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayesha Zafar — Computer Engineering & Research Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #F5F2EB;
+            --bg-cream-dark: #EAE5D9;
+            --green-dark: #2C4A3E;
+            --green-mid: #3B6152;
+            --rust-accent: #D96B43;
+            --mustard-accent: #E0A838;
+            --text-dark: #1E2D27;
+            --text-muted: #52635B;
+            --card-bg: #FFFFFF;
+            --border-color: rgba(44, 74, 62, 0.15);
+            --font-heading: 'DM Serif Display', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --shadow-soft: 0 8px 24px rgba(44, 74, 62, 0.08);
+            --shadow-hover: 0 18px 36px rgba(44, 74, 62, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Textured Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(44, 74, 62, 0.04) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Navigation Header */
+        header {
+            background-color: var(--green-dark);
+            color: var(--bg-cream);
+            padding: 1.25rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--mustard-accent);
+            backdrop-filter: blur(8px);
+        }
+
+        .brand-logo {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--bg-cream);
+        }
+
+        .brand-logo span {
+            color: var(--mustard-accent);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--mustard-accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--mustard-accent);
+        }
+
+        .btn-cta {
+            background-color: var(--mustard-accent);
+            color: var(--text-dark);
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            background-color: #ebd15b;
+            box-shadow: 0 6px 16px rgba(224, 168, 56, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--rust-accent);
+            color: #FFFFFF;
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(217, 107, 67, 0.3);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            color: var(--bg-cream);
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 2px solid rgba(245, 242, 235, 0.3);
+            transition: all 0.25s;
+            display: inline-block;
+        }
+
+        .btn-outline-light:hover {
+            border-color: var(--mustard-accent);
+            color: var(--mustard-accent);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: var(--green-dark);
+            color: var(--bg-cream);
+            padding: 4rem 5% 6rem 5%;
+            position: relative;
+            min-height: 80vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Animated Glow */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 60%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(217, 107, 67, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            animation: floatBg 12s infinite alternate ease-in-out;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -20%;
+            width: 80%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(224, 168, 56, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+            animation: floatBg 15s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes floatBg {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-30px, 30px) scale(1.2); }
+        }
+
+        .hero-watermark {
+            position: absolute;
+            right: 2%;
+            bottom: 5%;
+            font-family: var(--font-heading);
+            font-size: 8rem;
+            line-height: 0.8;
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(245, 242, 235, 0.06);
+            user-select: none;
+            pointer-events: none;
+            z-index: 1;
+            animation: textPulse 8s infinite alternate;
+        }
+
+        @keyframes textPulse {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title .highlight {
+            color: var(--mustard-accent);
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--bg-cream-dark);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            font-weight: 400;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .pill-tag-hero {
+            background: rgba(245, 242, 235, 0.1);
+            border: 1px solid rgba(245, 242, 235, 0.2);
+            color: var(--bg-cream);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s;
+        }
+
+        .pill-tag-hero:hover {
+            background: rgba(245, 242, 235, 0.2);
+            border-color: var(--mustard-accent);
+        }
+
+        .hero-image-card {
+            z-index: 2;
+            position: relative;
+            background: var(--rust-accent);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+            transition: transform 0.4s ease;
+        }
+
+        .hero-image-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 420px;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .hero-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .hero-photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(30, 45, 39, 0.9) 0%, rgba(30, 45, 39, 0.3) 50%, transparent 100%);
+            z-index: 2;
+        }
+
+        .hero-photo-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            z-index: 3;
+            color: var(--bg-cream);
+            text-align: left;
+        }
+
+        .badge-status {
+            background-color: var(--mustard-accent);
+            color: var(--text-dark);
+            font-weight: 700;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 5;
+            animation: bounceStatus 3s infinite;
+        }
+
+        @keyframes bounceStatus {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        /* Cat Paw Prints (placed nicely) */
+        .cat-paw {
+            font-size: 1.5rem;
+            color: var(--mustard-accent);
+            opacity: 0.4;
+            user-select: none;
+            pointer-events: none;
+            display: inline-block;
+        }
+
+        .cat-paw-hero {
+            position: absolute;
+            top: 15%;
+            left: 8%;
+            transform: rotate(-15deg);
+            animation: pawFloat 6s infinite alternate ease-in-out;
+        }
+
+        .cat-paw-footer {
+            font-size: 1.2rem;
+            animation: pawFloat 4s infinite alternate ease-in-out;
+        }
+
+        @keyframes pawFloat {
+            0% { transform: translateY(0) rotate(-15deg); }
+            100% { transform: translateY(-10px) rotate(0deg); }
+        }
+
+        /* Section Container */
+        .section-container {
+            padding: 5rem 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            color: var(--green-dark);
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--rust-accent);
+            border-radius: 4px;
+            transition: width 0.5s;
+        }
+
+        .section-title:hover::after {
+            width: 100%;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            margin-top: 0.8rem;
+        }
+
+        /* Card Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border-left: 6px solid var(--rust-accent);
+            box-shadow: var(--shadow-soft);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+
+        .about-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-4px);
+        }
+
+        .about-card p {
+            margin-bottom: 1.2rem;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        .quick-facts-card {
+            background: var(--green-dark);
+            color: var(--bg-cream);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-facts-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(224, 168, 56, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            animation: subtlePulse 10s infinite;
+        }
+
+        @keyframes subtlePulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .quick-facts-card h3 {
+            color: var(--mustard-accent);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .fact-item {
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(245, 242, 235, 0.08);
+        }
+
+        .fact-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--mustard-accent);
+        }
+
+        .fact-val {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* Experience & Research Cards */
+        .card-block {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: transform 0.25s, box-shadow 0.25s;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .card-block:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(44, 74, 62, 0.2);
+        }
+
+        .card-tag {
+            display: inline-block;
+            background-color: var(--bg-cream-dark);
+            color: var(--green-dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+        }
+
+        .card-tag.upcoming {
+            background-color: var(--mustard-accent);
+            color: var(--text-dark);
+        }
+
+        .card-tag.research {
+            background-color: var(--rust-accent);
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            color: var(--green-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-meta {
+            font-size: 0.95rem;
+            color: var(--rust-accent);
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .pill-tech {
+            background-color: var(--bg-cream);
+            border: 1px solid var(--border-color);
+            color: var(--text-dark);
+            font-size: 0.8rem;
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .pill-tech:hover {
+            background-color: var(--green-dark);
+            color: var(--bg-cream);
+            border-color: var(--green-dark);
+        }
+
+        /* Education & Coursework */
+        .education-block {
+            background: linear-gradient(145deg, var(--green-dark), #1f3a30);
+            color: var(--bg-cream);
+            padding: 3rem;
+            border-radius: 16px;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .course-chip-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .course-chip {
+            background-color: rgba(245, 242, 235, 0.08);
+            border: 1px solid rgba(245, 242, 235, 0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            cursor: default;
+        }
+
+        .course-chip:hover {
+            background-color: rgba(245, 242, 235, 0.15);
+            border-color: var(--mustard-accent);
+        }
+
+        .course-chip span {
+            color: var(--mustard-accent);
+            font-weight: 700;
+            margin-left: 0.4rem;
+        }
+
+        /* Skills Section */
+        .skill-group {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 1.75rem;
+            border-top: 4px solid var(--green-dark);
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .skill-group:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .skill-group h4 {
+            font-size: 1.3rem;
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        .skill-badge {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--bg-cream);
+            padding: 0.1rem 0.6rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        /* Leadership Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 3px solid var(--mustard-accent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(4px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.4rem;
+            top: 0.3rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: var(--rust-accent);
+            border: 3px solid var(--bg-cream);
+            box-shadow: 0 0 0 4px var(--green-dark);
+            transition: background-color 0.3s;
+        }
+
+        .timeline-item:hover::before {
+            background-color: var(--mustard-accent);
+        }
+
+        .timeline-role {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--green-dark);
+        }
+
+        .timeline-org {
+            font-weight: 600;
+            color: var(--rust-accent);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(145deg, var(--green-dark), #1a3228);
+            color: var(--bg-cream);
+            padding: 4rem 5% 2rem 5%;
+            border-top: 4px solid var(--rust-accent);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1300px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .footer-content a {
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .footer-content a:hover {
+            color: var(--mustard-accent);
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(245, 242, 235, 0.08);
+            font-size: 0.85rem;
+            color: var(--bg-cream-dark);
+        }
+
+        .contact-icon-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .contact-icon-row a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .contact-icon-row a:hover {
+            color: var(--mustard-accent);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                padding-top: 3rem;
+                min-height: auto;
+            }
+            .hero-title {
+                font-size: 3rem;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                display: none;
+            }
+            .hero-watermark {
+                font-size: 4rem;
+            }
+            .hero-image-placeholder {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            .card-title {
+                font-size: 1.4rem;
+            }
+            .education-block {
+                padding: 1.5rem;
+            }
+            .quick-facts-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="brand-logo">Ayesha <span>Zafar</span></a>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#leadership">Leadership</a>
+            <a href="#contact" class="btn-cta">Get in Touch</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="cat-paw cat-paw-hero">🐾</div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">Computer <span class="highlight">Engineering</span> Student</h1>
+            <p class="hero-subtitle">
+                Computer Engineering undergraduate at NUST CEME exploring AI/ML, biomedical technology, medical imaging, and embedded systems. I enjoy turning engineering concepts into practical projects and building solutions at the intersection of intelligent computing, healthcare, and hardware.
+            </p>
+            <div class="hero-tags">
+                <span class="pill-tag-hero">Computer Engineering Undergraduate</span>
+                <span class="pill-tag-hero">Biomedical AI Explorer</span>
+                <span class="pill-tag-hero">Embedded Systems</span>
+                <span class="pill-tag-hero">NUST CEME</span>
+            </div>
+            <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                <a href="#research" class="btn-cta">View Research Exposure</a>
+                <a href="#projects" class="btn-secondary">Explore Projects</a>
+                <a href="#" class="btn-outline-light">CV (PDF)</a>
+            </div>
+        </div>
+        
+        <div class="hero-image-card">
+            <div class="badge-status">5th Semester · NUST CEME</div>
+            <div class="hero-image-placeholder">
+                <!-- ADD YOUR PHOTO HERE (save as me.jpg in same folder) -->
+                <img src="me.jpg" alt="Ayesha Zafar" class="hero-photo">
+                <div class="hero-photo-overlay"></div>
+                <div class="hero-photo-text">
+                    <p style="font-weight: 600; font-size: 1.3rem;">Ayesha Zafar</p>
+                    <p style="font-size: 0.85rem; opacity: 0.9;">NUST CEME · Computer Engineering</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-watermark">RESEARCH<br>PORTFOLIO</div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-container">
+        <h2 class="section-title">About Me <span class="cat-paw">🐾</span></h2>
+        <p class="section-subtitle">Bridging engineering fundamentals with interdisciplinary problem-solving</p>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <p>
+                    I am a Computer Engineering undergraduate student at NUST College of Electrical and Mechanical Engineering (CEME), currently in my 5th semester. My core academic drive is centered on understanding how hardware and intelligent software integrate to solve meaningful human problems.
+                </p>
+                <p>
+                    Rather than limiting myself to a single narrow domain early in my career, I am intentionally utilizing my undergraduate years to develop a grounded engineering foundation across computer architecture, embedded systems, data structures, and algorithms, while actively exploring emerging areas in medical imaging, biomedical AI, and intelligent systems.
+                </p>
+                <p>
+                    I enjoy serving as a bridge between technical disciplines. My long-term goal is to pursue a Master's degree abroad, contributing to interdisciplinary research initiatives that apply engineering to healthcare, diagnostics, and real-world technology challenges.
+                </p>
+            </div>
+
+            <div class="quick-facts-card">
+                <h3>Quick Profile</h3>
+                <div class="fact-item">
+                    <div class="fact-label">Degree & Status</div>
+                    <div class="fact-val">B.E. Computer Engineering (5th Sem)</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-label">Institution</div>
+                    <div class="fact-val">NUST CEME, Pakistan</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-label">Expected Graduation</div>
+                    <div class="fact-val">August 2028</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-label">Cumulative GPA</div>
+                    <div class="fact-val">3.15 / 4.00</div>
+                </div>
+                <div class="fact-item">
+                    <div class="fact-label">Languages</div>
+                    <div class="fact-val">English, Urdu, Punjabi, German (A1.1 → A2/B1 funded)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Experience Section -->
+    <section id="research" style="background-color: var(--bg-cream-dark); padding: 5rem 5%;">
+        <div style="max-width: 1300px; margin: 0 auto;">
+            <h2 class="section-title">Research Exposure <span class="cat-paw">🐾</span></h2>
+            <p class="section-subtitle">Early research internships, projects, and incoming volunteer initiatives</p>
+
+            <div class="grid-2">
+                <!-- BIOMISA Internship -->
+                <div class="card-block">
+                    <span class="card-tag research">Full-Time Research Internship</span>
+                    <h3 class="card-title">Biomedical AI & Medical Imaging</h3>
+                    <div class="card-meta">BIOMISA Lab, NUST CEME | June 8 – August 8, 2026</div>
+                    
+                    <p><strong>Supervisors:</strong> Dr. Usman Akram, Dr. Asad Mansoor Khan, Dr. Anum Abdul Salam</p>
+                    <p style="margin-top: 0.8rem;">
+                        <strong>Research Focus:</strong> Evaluation of medical image foundation models for disease segmentation in Chest X-Ray (CXR) imagery using VinDr-CXR dataset.
+                    </p>
+                    <p style="margin-top: 0.8rem;">
+                        <strong>My Contributions:</strong> Designed and implemented preprocessing pipelines for DINOv3; handled InSID3, MedSAM, MedSAM3, and SAM3 frameworks. Converted DICOM files to PNG format and created binary masks for ground-truth segmentation.
+                    </p>
+                    
+                    <div style="margin-top: 1rem; padding: 0.8rem; background: rgba(0,0,0,0.03); border-radius: 8px; font-size: 0.9rem; color: var(--text-muted); border-left: 3px solid var(--rust-accent);">
+                        <strong>Key Insight:</strong> DINOv3 pipeline was explored but did not solve the segmentation problem effectively; subsequently pivoted to MedSAM-based approaches which showed the most promising results.
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="pill-tech">Medical Imaging</span>
+                        <span class="pill-tech">DICOM</span>
+                        <span class="pill-tech">Chest X-Ray</span>
+                        <span class="pill-tech">MedSAM</span>
+                        <span class="pill-tech">DINOv3</span>
+                        <span class="pill-tech">Segmentation</span>
+                        <span class="pill-tech">Binary Masks</span>
+                    </div>
+                </div>
+
+                <!-- Upcoming MCI Project -->
+                <div class="card-block">
+                    <span class="card-tag upcoming">Upcoming Research Volunteer</span>
+                    <h3 class="card-title">Multimodal Early Detection of MCI</h3>
+                    <div class="card-meta">Starting 5th Semester | Dr. Ahsan Shehzad</div>
+                    
+                    <p><strong>Project:</strong> AI-Driven Multimodal Behavioral Biomarkers for Early Detection of Mild Cognitive Impairment.</p>
+                    <p style="margin-top: 0.8rem;">
+                        <strong>Context:</strong> Participating as a research volunteer in a major funded healthcare research initiative (~16M PKR) focusing on leveraging multimodal datasets for early biomarker identification and cognitive diagnostics.
+                    </p>
+
+                    <div class="tech-stack">
+                        <span class="pill-tech">AI in Healthcare</span>
+                        <span class="pill-tech">Multimodal Data</span>
+                        <span class="pill-tech">Mild Cognitive Impairment</span>
+                        <span class="pill-tech">Early Detection</span>
+                        <span class="pill-tech">Behavioral Biomarkers</span>
+                    </div>
+                </div>
+
+                <!-- AI Explanations & Cognitive Load Project -->
+                <div class="card-block" style="grid-column: 1 / -1;">
+                    <span class="card-tag">Course Research Study</span>
+                    <h3 class="card-title">AI Micro vs. Macro Explanations: Effects on Cognitive Load & Learning</h3>
+                    <div class="card-meta">Technical & Business Writing Research Project | NUST CEME</div>
+                    
+                    <p>
+                        <strong>Study Context:</strong> Investigated the impact of concise (micro) versus detailed (macro) AI-generated explanations on the cognitive load and short-term knowledge retention of university students.
+                    </p>
+                    <p style="margin-top: 0.8rem;">
+                        <strong>Methodology & Findings:</strong> Conducted a controlled experiment involving ~30 participant observations within a broader ~100 student cohort study framework. The empirical findings supported our initial hypothesis: micro explanations resulted in measurably lower self-reported cognitive load and improved immediate comprehension outcomes.
+                    </p>
+
+                    <div class="tech-stack">
+                        <span class="pill-tech">Cognitive Load Assessment</span>
+                        <span class="pill-tech">Human-AI Interaction</span>
+                        <span class="pill-tech">Experimental Design</span>
+                        <span class="pill-tech">Data Analysis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-container">
+        <h2 class="section-title">Technical Projects <span class="cat-paw">🐾</span></h2>
+        <p class="section-subtitle">Engineering implementations across computer architecture, systems, and algorithms</p>
+
+        <div class="grid-2">
+            <!-- RISC Processor -->
+            <div class="card-block">
+                <span class="card-tag">Hardware / Digital Systems</span>
+                <h3 class="card-title">32-Bit Single-Cycle RISC Processor</h3>
+                <div class="card-meta">SystemVerilog Design & Simulation</div>
+                <p>
+                    Designed and implemented a custom 32-bit single-cycle RISC processor supporting I-type, R-type, Branch, Load, and Store instructions with multiplication support.
+                </p>
+                <ul style="margin-left: 1.2rem; margin-top: 0.8rem; font-size: 0.95rem; color: var(--text-muted);">
+                    <li>Core modules: Program Counter, Instruction Memory, 32-bit ALU, Register File, Data Memory, Control Logic.</li>
+                    <li>Verified instruction execution and data flow through comprehensive simulation.</li>
+                </ul>
+                <div style="margin-top: 1rem;">
+                    <a href="https://github.com/nyeshaz1/CUSTOM-PROCESSOR-WITH-MUL" target="_blank" style="color: var(--rust-accent); font-weight: 600;">View on GitHub →</a>
+                </div>
+                <div class="tech-stack">
+                    <span class="pill-tech">SystemVerilog</span>
+                    <span class="pill-tech">Computer Architecture</span>
+                    <span class="pill-tech">ALU Design</span>
+                    <span class="pill-tech">Simulation & Verification</span>
+                </div>
+            </div>
+
+            <!-- Drone Simulation -->
+            <div class="card-block">
+                <span class="card-tag">Software / Control Simulation</span>
+                <h3 class="card-title">Drone Formation Simulation</h3>
+                <div class="card-meta">Java Object-Oriented Architecture</div>
+                <p>
+                    Engineered an object-oriented multi-drone formation simulation modeling quadcopter kinematics, position feedback loops, dynamic navigation controllers, boundary constraint handling, and telemetry logging.
+                </p>
+                <div style="margin-top: 1rem;">
+                    <a href="https://github.com/nyeshaz1/autonomous-drone-fleet-simulator" target="_blank" style="color: var(--rust-accent); font-weight: 600;">View on GitHub →</a>
+                </div>
+                <div class="tech-stack">
+                    <span class="pill-tech">Java</span>
+                    <span class="pill-tech">OOP Design</span>
+                    <span class="pill-tech">PD/PID Navigation</span>
+                    <span class="pill-tech">Kinematics Simulation</span>
+                </div>
+            </div>
+
+            <!-- Traffic Optimization -->
+            <div class="card-block">
+                <span class="card-tag">Algorithms & Systems</span>
+                <h3 class="card-title">City Traffic Flow Optimization</h3>
+                <div class="card-meta">C++ & Graph Theory Algorithm</div>
+                <p>
+                    Developed a dynamic city traffic simulation utilizing graph representations to model road networks. Implemented Dijkstra's shortest-path algorithm for real-time route optimization and dynamic congestion modeling.
+                </p>
+                <div class="tech-stack">
+                    <span class="pill-tech">C++</span>
+                    <span class="pill-tech">Graph Theory</span>
+                    <span class="pill-tech">Dijkstra's Algorithm</span>
+                    <span class="pill-tech">Data Structures</span>
+                </div>
+            </div>
+
+            <!-- Foundational C++ Security -->
+            <div class="card-block">
+                <span class="card-tag">Utility / Console App</span>
+                <h3 class="card-title">Console Password Strength Evaluator</h3>
+                <div class="card-meta">Foundational C++ Development</div>
+                <p>
+                    Created a lightweight C++ console utility analyzing character entropy, length constraints, category distribution, and basic security rule-checking to output structural feedback on user inputs.
+                </p>
+                <div class="tech-stack">
+                    <span class="pill-tech">C++</span>
+                    <span class="pill-tech">String Analysis</span>
+                    <span class="pill-tech">Console Utility</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Coursework -->
+    <section id="education" class="section-container" style="padding-top: 0;">
+        <h2 class="section-title">Education & Academic Record <span class="cat-paw">🐾</span></h2>
+        <p class="section-subtitle">NUST College of Electrical and Mechanical Engineering (CEME)</p>
+
+        <div class="education-block">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h3 style="font-size: 2rem; color: var(--mustard-accent);">Bachelor of Engineering in Computer Engineering</h3>
+                    <p style="font-size: 1.1rem; opacity: 0.9;">NUST College of Electrical & Mechanical Engineering (CEME), Rawalpindi</p>
+                </div>
+                <div style="text-align: right;">
+                    <span style="background: rgba(245,242,235,0.12); padding: 0.4rem 1.2rem; border-radius: 20px; font-weight: 600; border: 1px solid rgba(245,242,235,0.15);">CGPA: 3.15 / 4.00</span>
+                    <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 0.4rem;">Expected Graduation: Aug 2028</p>
+                </div>
+            </div>
+
+            <h4 style="margin-top: 2rem; font-size: 1.2rem; border-bottom: 1px solid rgba(245,242,235,0.12); padding-bottom: 0.5rem;">Core Technical Coursework</h4>
+            <div class="course-chip-grid">
+                <div class="course-chip">Logic & Sequential Circuit Design <span>A</span></div>
+                <div class="course-chip">Microprocessor & Microcontroller Design <span>B+</span></div>
+                <div class="course-chip">Fundamentals of Programming <span>B+</span></div>
+                <div class="course-chip">Computer System Architecture <span>B</span></div>
+                <div class="course-chip">Data Structures <span>B</span></div>
+                <div class="course-chip">Operating Systems <span>B</span></div>
+                <div class="course-chip">Object-Oriented Programming <span>B</span></div>
+                <div class="course-chip">Electronic Devices & Circuits <span>B</span></div>
+                <div class="course-chip">Discrete Mathematics <span>B</span></div>
+                <div class="course-chip">Linear Algebra & ODEs <span>B</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section id="skills" class="section-container" style="padding-top: 0;">
+        <h2 class="section-title">Technical Competencies <span class="cat-paw">🐾</span></h2>
+        <p class="section-subtitle">Honest proficiency breakdown based on academic & practical exposure</p>
+
+        <div class="grid-3">
+            <div class="skill-group">
+                <h4>Programming</h4>
+                <div class="skill-list">
+                    <div class="skill-item"><span>C & C++</span><span class="skill-badge">Intermediate</span></div>
+                    <div class="skill-item"><span>SystemVerilog</span><span class="skill-badge">Intermediate</span></div>
+                    <div class="skill-item"><span>Java</span><span class="skill-badge">Intermediate</span></div>
+                    <div class="skill-item"><span>Python</span><span class="skill-badge">Revising / Developing</span></div>
+                    <div class="skill-item"><span>Embedded C</span><span class="skill-badge">Academic Exposure</span></div>
+                    <div class="skill-item"><span>PIC18 Assembly</span><span class="skill-badge">Academic Exposure</span></div>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <h4>AI & Biomedical</h4>
+                <div class="skill-list">
+                    <div class="skill-item"><span>Medical Image Segmentation</span><span class="skill-badge">Research Exposure</span></div>
+                    <div class="skill-item"><span>MedSAM / SAM Frameworks</span><span class="skill-badge">Research Exposure</span></div>
+                    <div class="skill-item"><span>DINOv3 / INSID3</span><span class="skill-badge">Exploratory</span></div>
+                    <div class="skill-item"><span>DICOM & CXR Analysis</span><span class="skill-badge">Research Exposure</span></div>
+                    <div class="skill-item"><span>AI/ML Fundamentals</span><span class="skill-badge">Active Exploration</span></div>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <h4>Hardware & Tools</h4>
+                <div class="skill-list">
+                    <div class="skill-item"><span>PIC18 / Microcontrollers</span><span class="skill-badge">Academic Lab</span></div>
+                    <div class="skill-item"><span>Raspberry Pi Integration</span><span class="skill-badge">Hands-on</span></div>
+                    <div class="skill-item"><span>VS Code / MPLAB X</span><span class="skill-badge">Proficient</span></div>
+                    <div class="skill-item"><span>Proteus & LTspice</span><span class="skill-badge">Lab Simulation</span></div>
+                    <div class="skill-item"><span>Git & GitHub</span><span class="skill-badge">Foundational</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership & Activities -->
+    <section id="leadership" class="section-container" style="padding-top: 0;">
+        <h2 class="section-title">Leadership & Campus Involvement <span class="cat-paw">🐾</span></h2>
+        <p class="section-subtitle">Demonstrated organizational progression and extracurricular contributions</p>
+
+        <div class="about-grid">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-role">Deputy Director — Promotions & Media Teams</div>
+                    <div class="timeline-org">COMPPEC '26 (Upcoming National Competition)</div>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.3rem;">
+                        Promoted to executive deputy directorship following successful event execution during COMPPEC '25.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-role">Volunteer — Promotions, Admin & HR Teams</div>
+                    <div class="timeline-org">COMPPEC '25</div>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.3rem;">
+                        Managed administrative support, venue coordination, and promotional outreach for the flagship project exhibition.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-role">Director — Media Team</div>
+                    <div class="timeline-org">ISAAR (Student Welfare Organization)</div>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.3rem;">
+                        Led media campaigns for community fundraising initiatives and student support activities.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-role">Director — Media Team</div>
+                    <div class="timeline-org">EME Media Club (EMC)</div>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.3rem;">3-week tenure as media lead.</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="card-block" style="margin-bottom: 1.5rem; border-left: 4px solid var(--mustard-accent);">
+                    <h4 style="font-size: 1.2rem; color: var(--green-dark);">Extracurricular Achievements</h4>
+                    <ul style="margin-left: 1.2rem; margin-top: 0.8rem; font-size: 0.95rem; list-style: none; padding: 0;">
+                        <li style="padding: 0.3rem 0; border-bottom: 1px solid var(--border-color);"> <strong>SEMPEC Competition:</strong> Runner-up Position (Departmental Level)</li>
+                        <li style="padding: 0.3rem 0;"> <strong>NUST Archery Club:</strong> Deputy Director | 2nd Runner-up</li>
+                    </ul>
+                </div>
+
+                <div class="card-block" style="border-left: 4px solid var(--rust-accent);">
+                    <h4 style="font-size: 1.2rem; color: var(--green-dark);">Language Development</h4>
+                    <p style="font-size: 0.95rem; margin-top: 0.5rem;">
+                        <strong>German Language:</strong> Completed A1.1 coursework; awarded a funded competitive seat for A2 & B1 program progression.
+                    </p>
+                    <div style="margin-top: 0.8rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        <span class="pill-tech">English (Fluent)</span>
+                        <span class="pill-tech">Urdu (Native)</span>
+                        <span class="pill-tech">Punjabi (Native)</span>
+                        <span class="pill-tech">German (A1.1 → A2/B1)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div>
+                <h3 style="font-size: 2.2rem; font-family: var(--font-heading); color: var(--bg-cream);">Let's Connect 🐾</h3>
+                <p style="max-width: 450px; margin-top: 0.5rem; opacity: 0.8;">
+                    Open to research discussions, academic collaborations, international research internships, and undergraduate opportunities.
+                </p>
+            </div>
+            <div>
+                <p style="font-weight: 600; color: var(--mustard-accent); margin-bottom: 0.8rem;">CONTACT DETAILS</p>
+                <div class="contact-icon-row">
+                    <a href="mailto:ayeshazafar.n@gmail.com"><span style="font-size: 1.1rem;">✉</span> ayeshazafar.n@gmail.com</a>
+                    <a href="https://github.com/nyeshaz1" target="_blank"><span style="font-size: 1.1rem;">⌨</span> github.com/nyeshaz1</a>
+                    <a href="https://www.linkedin.com/in/ayesha-zafar-9a776b299" target="_blank"><span style="font-size: 1.1rem;">🔗</span> LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Ayesha Zafar — Computer Engineering Undergraduate, NUST CEME.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
